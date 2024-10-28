@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {DepartmentsComponent} from '../app/pages/departments/departments.component'
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'departments', component: DepartmentsComponent },
+  { path: '', redirectTo: '/departments', pathMatch: 'full' }, // Redirect to departments on default path
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
