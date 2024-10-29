@@ -5,7 +5,6 @@ import {ReactiveFormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
-import { EntityFormComponent } from './components/entity-form/entity-form.component';
 import { EntityListComponent } from './components/entity-list/entity-list.component';
 import { UsersComponent } from './pages/users/users.component';
 
@@ -13,7 +12,6 @@ import { UsersComponent } from './pages/users/users.component';
   declarations: [
     AppComponent,
     DepartmentsComponent,
-    EntityFormComponent,
     EntityListComponent,
     UsersComponent
   ],

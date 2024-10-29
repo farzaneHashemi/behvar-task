@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EntityFormComponent } from './entity-form.component';
 
 describe('EntityFormComponent', () => {
   let component: EntityFormComponent;
