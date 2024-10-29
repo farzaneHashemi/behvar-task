@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-entity-form',
@@ -7,10 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./entity-form.component.css']
 })
 export class EntityFormComponent implements OnInit {
-  departmentForm: FormGroup;
+  @Output() formSubmit = new EventEmitter<User>();
+  form: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.departmentForm = this.fb.group({
+    this.form = this.fb.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
       status: ['', Validators.required],
@@ -22,7 +24,7 @@ export class EntityFormComponent implements OnInit {
 
   // Method to get customized validation messages
   getValidationMessage(controlName: string): string {
-    const control = this.departmentForm.get(controlName);
+    const control = this.form.get(controlName);
     if (control?.hasError('required')) {
       return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required. Please fill it out!`;
     }
@@ -30,8 +32,10 @@ export class EntityFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.departmentForm.valid) {
-      console.log('Form Submitted!', this.departmentForm.value);
+    if (this.form.valid) {
+      this.formSubmit.emit(this.form.value as User);
+      this.form.reset();
+      console.log('Form Submitted!', this.form.value);
     } else {
       console.log('Form not valid');
     }
