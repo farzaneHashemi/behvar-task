@@ -1,3 +1,61 @@
 <h1>Employees</h1>
-<app-entity-form (formSubmit)="addUser($event)"></app-entity-form>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="id">ID:</label>
+    <input id="id" formControlName="id">
+    <div *ngIf="userForm.get('id')?.invalid && (userForm.get('id')?.touched || userForm.get('id')?.dirty)">
+      <span>{{ getValidationMessage('id') }}</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name">
+    <div *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.touched || userForm.get('name')?.dirty)">
+      <span>{{ getValidationMessage('name') }}</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="organizationUnit">Organization Unit:</label>
+    <input id="organizationUnit" formControlName="organizationUnit">
+    <div *ngIf="userForm.get('organizationUnit')?.invalid && (userForm.get('organizationUnit')?.touched || userForm.get('organizationUnit')?.dirty)">
+      <span>{{ getValidationMessage('organizationUnit') }}</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="gender">Gender:</label>
+    <select id="gender" formControlName="gender">
+      <option value="">Select...</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <div *ngIf="userForm.get('gender')?.invalid && (userForm.get('gender')?.touched || userForm.get('gender')?.dirty)">
+      <span>{{ getValidationMessage('gender') }}</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" formControlName="phoneNumber">
+  </div>
+
+  <div>
+    <label for="education">Education:</label>
+    <select id="education" formControlName="education">
+      <option value="">Select...</option>
+      <option value="diploma">Diploma</option>
+      <option value="bachelor">Bachelor</option>
+      <option value="master">Master</option>
+      <option value="phd">PhD</option>
+    </select>
+    <div *ngIf="userForm.get('education')?.invalid && (userForm.get('education')?.touched || userForm.get('education')?.dirty)">
+      <span>{{ getValidationMessage('education') }}</span>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!userForm.valid">Add Employee</button>
+</form>
+
 <app-entity-list [entities]="users"></app-entity-list>

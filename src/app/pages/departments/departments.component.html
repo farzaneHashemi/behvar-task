@@ -1,3 +1,41 @@
 <h1>Departments</h1>
-<app-entity-form (formSubmit)="addDepartment($event)"></app-entity-form>
+<form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="id">ID:</label>
+    <input id="id" formControlName="id">
+    <div *ngIf="departmentForm.get('id')?.invalid && (departmentForm.get('id')?.touched || departmentForm.get('id')?.dirty)">
+      <span>{{ getValidationMessage('id') }}</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name">
+    <div *ngIf="departmentForm.get('name')?.invalid && (departmentForm.get('name')?.touched || departmentForm.get('name')?.dirty)">
+      <span>{{ getValidationMessage('name') }}</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="status">Status:</label>
+    <input type="radio" id="active" formControlName="status" value="active">
+    <label for="active">Active</label>
+    <input type="radio" id="inactive" formControlName="status" value="inactive">
+    <label for="inactive">Inactive</label>
+    <div *ngIf="departmentForm.get('status')?.invalid && (departmentForm.get('status')?.touched || departmentForm.get('status')?.dirty)">
+      <span>{{ getValidationMessage('status') }}</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="establishedDate">Established Date:</label>
+    <input id="establishedDate" formControlName="establishedDate" type="date">
+    <div *ngIf="departmentForm.get('establishedDate')?.invalid && (departmentForm.get('establishedDate')?.touched || departmentForm.get('establishedDate')?.dirty)">
+      <span>{{ getValidationMessage('establishedDate') }}</span>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!departmentForm.valid">Add Department</button>
+</form>
+
 <app-entity-list [entities]="departments"></app-entity-list>
