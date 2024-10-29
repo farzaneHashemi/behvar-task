@@ -42,9 +42,17 @@ export class DepartmentsComponent implements OnInit {
 
   onSubmit(): void {
     if (this.departmentForm.valid) {
-      const formData = this.departmentForm.value;
-      console.log('submit dept', formData);
-      this.departmentService.addDepartment(this.departmentForm.value)
+      this.departmentService.addDepartment(this.departmentForm.value).subscribe({
+        next: (response: Department) => {
+          console.log("dept added", response)
+          this.departments.push(response)
+        },
+        error: (error: any) => {
+          console.log("could not add dept, error is ", error)
+        }
+      })
+      console.log('submit dept', this.departmentForm.value);
+      
     } else console.log('not valid form')
 
   }

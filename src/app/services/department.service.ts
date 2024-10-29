@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Department } from '../models/department.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,14 @@ export class DepartmentService {
   departments$ = this.departmentsSource.asObservable();
 
   private departments: any[] = [];
+  private apiUrl = 'http://localhost:3000/departments';
 
-  addDepartment(department: any): void {
-    this.departments.push(department);
-    this.departmentsSource.next(this.departments);
+  constructor(private http: HttpClient) {}
+
+  addDepartment(department: Department): Observable<Department> {
+    return this.http.post<Department>(this.apiUrl, department);
+    // this.departments.push(department);
+    // this.departmentsSource.next(this.departments);
   }
 
   getDepartments(): any[] {

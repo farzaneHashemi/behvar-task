@@ -41,12 +41,20 @@ export class UsersComponent implements OnInit {
     return '';
   }
 
-  onSubmit(): void {
+  onSubmit(): any {
     if (this.userForm.valid) {
-      console.log('submit user', this.userForm.value);
-      this.userService.addUser(this.userForm.value);
+      this.userService.addUser(this.userForm.value).subscribe({
+        next: (response: User) => {
+          console.log('User added successfully:', response);
+          this.users.push(response);
+        },
+        error: (error: any) => {
+          console.error('Error adding user:', error);
+        },
+      });
+    } else {
+      console.log('Invalid form!');
     }
-    else console.log('invalide form!');
-
   }
+  
 }
