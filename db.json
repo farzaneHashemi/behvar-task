@@ -15,6 +15,46 @@
       "gender": "male",
       "phoneNumber": "9123456789",
       "education": "bachelor"
+    },
+    {
+      "id": "1000",
+      "name": "far",
+      "organizationUnit": "8",
+      "gender": "male",
+      "phoneNumber": "912",
+      "education": "bachelor"
+    },
+    {
+      "id": "1000",
+      "name": "hasan ",
+      "organizationUnit": "hr",
+      "gender": "male",
+      "phoneNumber": "111",
+      "education": "phd"
+    },
+    {
+      "id": "3",
+      "name": "sasa",
+      "organizationUnit": "hr",
+      "gender": "male",
+      "phoneNumber": "912",
+      "educationLevel": "phd"
+    },
+    {
+      "id": "000",
+      "name": "farfar",
+      "organizationUnit": "999",
+      "gender": "Female",
+      "phoneNumber": "9123456789",
+      "educationLevel": "bachelor"
+    },
+    {
+      "id": "9090",
+      "name": "ft",
+      "departmentId": "8989",
+      "gender": "Male",
+      "phoneNumber": "666",
+      "educationLevel": "phd"
     }
   ],
   "departments": [
@@ -41,6 +81,12 @@
       "name": "new dept",
       "status": "inactive",
       "establishedDate": "2024-10-02"
+    },
+    {
+      "id": "1",
+      "name": "a",
+      "status": "inactive",
+      "establishedDate": "2024-10-15"
     }
   ]
 }

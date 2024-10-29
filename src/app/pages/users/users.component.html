@@ -1,7 +1,7 @@
 <h1>Employees</h1>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="id">ID:</label>
+    <label for="id">Employee ID:</label>
     <input id="id" formControlName="id">
     <div *ngIf="userForm.get('id')?.invalid && (userForm.get('id')?.touched || userForm.get('id')?.dirty)">
       <span>{{ getValidationMessage('id') }}</span>
@@ -17,20 +17,19 @@
   </div>
 
   <div>
-    <label for="organizationUnit">Organization Unit:</label>
-    <input id="organizationUnit" formControlName="organizationUnit">
-    <div *ngIf="userForm.get('organizationUnit')?.invalid && (userForm.get('organizationUnit')?.touched || userForm.get('organizationUnit')?.dirty)">
-      <span>{{ getValidationMessage('organizationUnit') }}</span>
+    <label for="departmentId">Department ID:</label>
+    <input id="departmentId" formControlName="departmentId">
+    <div *ngIf="userForm.get('departmentId')?.invalid && (userForm.get('departmentId')?.touched || userForm.get('departmentId')?.dirty)">
+      <span>{{ getValidationMessage('departmentId') }}</span>
     </div>
   </div>
 
   <div>
     <label for="gender">Gender:</label>
-    <select id="gender" formControlName="gender">
-      <option value="">Select...</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
+    <input type="radio" id="male" formControlName="gender" value="Male">
+    <label for="active">Male</label>
+    <input type="radio" id="female" formControlName="gender" value="Female">
+    <label for="inactive">Female</label>
     <div *ngIf="userForm.get('gender')?.invalid && (userForm.get('gender')?.touched || userForm.get('gender')?.dirty)">
       <span>{{ getValidationMessage('gender') }}</span>
     </div>
@@ -42,20 +41,20 @@
   </div>
 
   <div>
-    <label for="education">Education:</label>
-    <select id="education" formControlName="education">
+    <label for="educationLevel">Education:</label>
+    <select id="educationLevel" formControlName="educationLevel">
       <option value="">Select...</option>
       <option value="diploma">Diploma</option>
       <option value="bachelor">Bachelor</option>
       <option value="master">Master</option>
       <option value="phd">PhD</option>
     </select>
-    <div *ngIf="userForm.get('education')?.invalid && (userForm.get('education')?.touched || userForm.get('education')?.dirty)">
-      <span>{{ getValidationMessage('education') }}</span>
+    <div *ngIf="userForm.get('educationLevel')?.invalid && (userForm.get('educationLevel')?.touched || userForm.get('educationLevel')?.dirty)">
+      <span>{{ getValidationMessage('educationLevel') }}</span>
     </div>
   </div>
 
   <button type="submit" [disabled]="!userForm.valid">Add Employee</button>
 </form>
 
-<app-entity-list [entities]="users"></app-entity-list>
+<app-entity-list [entities]="users" [columns]="UserColumns"></app-entity-list>

@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class EntityListComponent {
   @Input() entities: any[] = []; 
+  @Input() columns: { key: string; label: string }[] = [];
 
   onRowClick(entity: any): void {
     console.log('Row clicked:', entity); 

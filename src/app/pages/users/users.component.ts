@@ -11,15 +11,23 @@ import { UserService } from '../../services/user.service';
 export class UsersComponent implements OnInit {
   userForm: FormGroup;
   users: User[] = [];
+  UserColumns = [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'User Name' },
+    { key: 'departmentId', label: 'Department ID' },
+    { key: 'gender', label: 'Gender' },
+    { key: 'phoneNumber', label: 'Mobile Number'},
+    { key: 'educationLevel', label: 'Education Level'}
+  ];
 
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.userForm = this.fb.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
-      organizationUnit: ['', Validators.required],
+      departmentId: ['', Validators.required],
       gender: ['', Validators.required],
       phoneNumber: [''],
-      education: ['', Validators.required],
+      educationLevel: ['', Validators.required],
     });
   }
 

@@ -11,6 +11,13 @@ import { DepartmentService } from '../../services/department.service';
 export class DepartmentsComponent implements OnInit {
   departmentForm: FormGroup;
   departments: Department[] = [];
+  departmentColumns = [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'Department Name' },
+    { key: 'status', label: 'Department Status' },
+    { key: 'establishedDate', label: 'Established Date' },
+  ];
+
 
   constructor(private fb: FormBuilder, private departmentService: DepartmentService) {
     this.departmentForm = this.fb.group({
@@ -26,7 +33,6 @@ export class DepartmentsComponent implements OnInit {
       this.departments = data;
       console.log('deps list fetched')
     });
-    // this.departments = this.departmentService.getDepartments(); 
   }
 
   addDepartment(department: Department): void {
@@ -36,7 +42,6 @@ export class DepartmentsComponent implements OnInit {
       this.departments = data;
       console.log('deps list fetched')
     });
-    // this.departments = this.departmentService.getDepartments(); // Refresh the departments list
   }
 
   getValidationMessage(controlName: string): string {
