@@ -1,23 +1,35 @@
-<form [formGroup]="entityForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="id">ID:</label>
-      <input id="id" formControlName="id" type="text" />
+<form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+    <label for="id">ID:</label>
+    <input id="id" formControlName="id" type="text" />
+    <div *ngIf="departmentForm.get('id').invalid && departmentForm.get('id').touched">
+      <small>ID is required.</small>
     </div>
-    <div>
-      <label for="name">Name:</label>
-      <input id="name" formControlName="name" type="text" />
+  
+    <label for="name">Department Name:</label>
+    <input id="name" formControlName="name" type="text" />
+    <div *ngIf="departmentForm.get('name').invalid && departmentForm.get('name').touched">
+      <small>Department name is required.</small>
     </div>
+  
+    <label for="status">Status:</label>
     <div>
-      <label>Status:</label>
-      <div>
+      <label>
         <input type="radio" formControlName="status" value="active" /> Active
+      </label>
+      <label>
         <input type="radio" formControlName="status" value="inactive" /> Inactive
-      </div>
+      </label>
     </div>
-    <div>
-      <label for="establishmentDate">Establishment Date:</label>
-      <input id="establishmentDate" formControlName="establishmentDate" type="date" />
+    <div *ngIf="departmentForm.get('status').invalid && departmentForm.get('status').touched">
+      <small>Status is required.</small>
     </div>
-    <button type="submit">Submit</button>
+  
+    <label for="establishmentDate">Establishment Date:</label>
+    <input id="establishmentDate" formControlName="establishmentDate" type="date" />
+    <div *ngIf="departmentForm.get('establishmentDate').invalid && departmentForm.get('establishmentDate').touched">
+      <small>Establishment date is required.</small>
+    </div>
+  
+    <button type="submit">Add Department</button>
   </form>
   

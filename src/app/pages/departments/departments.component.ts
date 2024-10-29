@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Department } from '../../models/department.model';
+import { DepartmentService } from '../../services/department.service';
 
 @Component({
   selector: 'app-departments',
@@ -7,18 +7,17 @@ import { Department } from '../../models/department.model';
   styleUrls: ['./departments.component.css']
 })
 export class DepartmentsComponent implements OnInit {
-  departments: Department[] = [];
-  newDepartment: Department = {
-    id: 0,
-    name: '',
-    status: 'active',
-    establishmentDate: new Date()
-  };
+  departments: any[] = [];
 
-  ngOnInit() {
-    //fetch initial list of departments or initialize data
+  constructor(private departmentService: DepartmentService) {}
+
+  ngOnInit(): void {
+    this.departmentService.departments$.subscribe(departments => {
+      this.departments = departments;
+    });
   }
 
-  addDepartment() {
+  addDepartment(department: any): void {
+    this.departmentService.addDepartment(department);
   }
 }

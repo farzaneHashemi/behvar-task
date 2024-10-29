@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,14 +6,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './entity-form.component.html',
   styleUrls: ['./entity-form.component.css']
 })
-export class EntityFormComponent implements OnInit {
-  @Input() entityData: any; 
-  @Output() formSubmit = new EventEmitter<any>(); 
-
-  entityForm: FormGroup;
+export class EntityFormComponent {
+  @Output() formSubmit: EventEmitter<any> = new EventEmitter();
+  departmentForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.entityForm = this.fb.group({
+    this.departmentForm = this.fb.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
       status: ['', Validators.required],
@@ -21,16 +19,12 @@ export class EntityFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    if (this.entityData) {
-      this.entityForm.patchValue(this.entityData); 
-    }
-  }
-
-  onSubmit(): void {
-    if (this.entityForm.valid) {
-      this.formSubmit.emit(this.entityForm.value);
-      this.entityForm.reset(); 
+  onSubmit() {
+    if (this.departmentForm.valid) {
+      this.formSubmit.emit(this.departmentForm.value);
+      this.departmentForm.reset();
+    } else {
+      this.departmentForm.markAllAsTouched(); // Mark all fields as touched for validation
     }
   }
 }
