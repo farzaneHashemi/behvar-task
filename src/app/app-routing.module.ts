@@ -4,7 +4,7 @@ import {DepartmentsComponent} from '../app/pages/departments/departments.compone
 
 const routes: Routes = [
   { path: 'departments', component: DepartmentsComponent },
-  { path: '', redirectTo: '/departments', pathMatch: 'full' }, // Redirect to departments on default path
+  { path: '', redirectTo: '/departments', pathMatch: 'full' }, 
 ];
 
 @NgModule({

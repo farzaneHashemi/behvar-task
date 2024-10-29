@@ -1,1 +1,23 @@
-<p>entity-form works!</p>
+<form [formGroup]="entityForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="id">ID:</label>
+      <input id="id" formControlName="id" type="text" />
+    </div>
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text" />
+    </div>
+    <div>
+      <label>Status:</label>
+      <div>
+        <input type="radio" formControlName="status" value="active" /> Active
+        <input type="radio" formControlName="status" value="inactive" /> Inactive
+      </div>
+    </div>
+    <div>
+      <label for="establishmentDate">Establishment Date:</label>
+      <input id="establishmentDate" formControlName="establishmentDate" type="date" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  

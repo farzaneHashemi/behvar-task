@@ -1,1 +1,19 @@
-<p>entity-list works!</p>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Establishment Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entity of entities" (click)="onRowClick(entity)">
+        <td>{{ entity.id }}</td>
+        <td>{{ entity.name }}</td>
+        <td>{{ entity.status }}</td>
+        <td>{{ entity.establishmentDate | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
