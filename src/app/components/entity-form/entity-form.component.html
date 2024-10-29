@@ -1,35 +1,37 @@
 <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
-    <label for="id">ID:</label>
-    <input id="id" formControlName="id" type="text" />
-    <div *ngIf="departmentForm.get('id').invalid && departmentForm.get('id').touched">
-      <small>ID is required.</small>
-    </div>
-  
-    <label for="name">Department Name:</label>
-    <input id="name" formControlName="name" type="text" />
-    <div *ngIf="departmentForm.get('name').invalid && departmentForm.get('name').touched">
-      <small>Department name is required.</small>
-    </div>
-  
-    <label for="status">Status:</label>
     <div>
-      <label>
-        <input type="radio" formControlName="status" value="active" /> Active
-      </label>
-      <label>
-        <input type="radio" formControlName="status" value="inactive" /> Inactive
-      </label>
-    </div>
-    <div *ngIf="departmentForm.get('status').invalid && departmentForm.get('status').touched">
-      <small>Status is required.</small>
+      <label for="id">ID:</label>
+      <input id="id" formControlName="id">
+      <div *ngIf="departmentForm.get('id')?.invalid && (departmentForm.get('id')?.touched || departmentForm.get('id')?.dirty)">
+        <span>{{ getValidationMessage('id') }}</span>
+      </div>
     </div>
   
-    <label for="establishmentDate">Establishment Date:</label>
-    <input id="establishmentDate" formControlName="establishmentDate" type="date" />
-    <div *ngIf="departmentForm.get('establishmentDate').invalid && departmentForm.get('establishmentDate').touched">
-      <small>Establishment date is required.</small>
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name">
+      <div *ngIf="departmentForm.get('name')?.invalid && (departmentForm.get('name')?.touched || departmentForm.get('name')?.dirty)">
+        <span>{{ getValidationMessage('name') }}</span>
+      </div>
     </div>
   
-    <button type="submit">Add Department</button>
+    <div>
+      <label for="status">Status:</label>
+      <input id="status" formControlName="status" type="radio" value="active"> Active
+      <input id="status" formControlName="status" type="radio" value="inactive"> Inactive
+      <div *ngIf="departmentForm.get('status')?.invalid && (departmentForm.get('status')?.touched || departmentForm.get('status')?.dirty)">
+        <span>{{ getValidationMessage('status') }}</span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="establishedDate">Established Date:</label>
+      <input id="establishedDate" formControlName="establishedDate" type="date">
+      <div *ngIf="departmentForm.get('establishedDate')?.invalid && (departmentForm.get('establishedDate')?.touched || departmentForm.get('establishedDate')?.dirty)">
+        <span>{{ getValidationMessage('establishedDate') }}</span>
+      </div>
+    </div>
+  
+    <button type="submit">Submit</button>
   </form>
   

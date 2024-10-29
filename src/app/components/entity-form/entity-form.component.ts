@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,8 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './entity-form.component.html',
   styleUrls: ['./entity-form.component.css']
 })
-export class EntityFormComponent {
-  @Output() formSubmit: EventEmitter<any> = new EventEmitter();
+export class EntityFormComponent implements OnInit {
   departmentForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -15,16 +14,26 @@ export class EntityFormComponent {
       id: ['', Validators.required],
       name: ['', Validators.required],
       status: ['', Validators.required],
-      establishmentDate: ['', Validators.required]
+      establishedDate: ['', Validators.required]
     });
   }
 
-  onSubmit() {
+  ngOnInit(): void {}
+
+  // Method to get customized validation messages
+  getValidationMessage(controlName: string): string {
+    const control = this.departmentForm.get(controlName);
+    if (control?.hasError('required')) {
+      return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required. Please fill it out!`;
+    }
+    return '';
+  }
+
+  onSubmit(): void {
     if (this.departmentForm.valid) {
-      this.formSubmit.emit(this.departmentForm.value);
-      this.departmentForm.reset();
+      console.log('Form Submitted!', this.departmentForm.value);
     } else {
-      this.departmentForm.markAllAsTouched(); // Mark all fields as touched for validation
+      console.log('Form not valid');
     }
   }
 }
