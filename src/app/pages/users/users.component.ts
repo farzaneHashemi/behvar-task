@@ -24,14 +24,17 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers();
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    });  
   }
 
   addUser(user: User): void {
     this.userService.addUser(user); 
     this.userForm.reset();
-    this.users = this.userService.getUsers(); 
-  }
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    });  }
 
   getValidationMessage(controlName: string): string {
     const control = this.userForm.get(controlName);

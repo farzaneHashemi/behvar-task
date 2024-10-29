@@ -17,11 +17,9 @@ export class DepartmentService {
 
   addDepartment(department: Department): Observable<Department> {
     return this.http.post<Department>(this.apiUrl, department);
-    // this.departments.push(department);
-    // this.departmentsSource.next(this.departments);
   }
 
-  getDepartments(): any[] {
-    return this.departments;
+  getDepartments(): Observable<Department[]> {
+    return this.http.get<Department[]>(this.apiUrl);
   }
 }

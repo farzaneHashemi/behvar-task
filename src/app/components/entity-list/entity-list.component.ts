@@ -6,9 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./entity-list.component.css']
 })
 export class EntityListComponent {
-  @Input() entities: any[] = []; // Input to receive the list of entities
+  @Input() entities: any[] = []; 
 
   onRowClick(entity: any): void {
-    console.log('Row clicked:', entity); // Handle row click (e.g., for viewing details)
+    console.log('Row clicked:', entity); 
   }
 }

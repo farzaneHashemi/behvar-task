@@ -22,14 +22,21 @@ export class DepartmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Initialize or fetch existing departments if needed
-    this.departments = this.departmentService.getDepartments(); 
+    this.departmentService.getDepartments().subscribe((data: Department[]) => {
+      this.departments = data;
+      console.log('deps list fetched')
+    });
+    // this.departments = this.departmentService.getDepartments(); 
   }
 
   addDepartment(department: Department): void {
     this.departmentService.addDepartment(department); 
     this.departmentForm.reset();
-    this.departments = this.departmentService.getDepartments(); // Refresh the departments list
+    this.departmentService.getDepartments().subscribe((data: Department[]) => {
+      this.departments = data;
+      console.log('deps list fetched')
+    });
+    // this.departments = this.departmentService.getDepartments(); // Refresh the departments list
   }
 
   getValidationMessage(controlName: string): string {

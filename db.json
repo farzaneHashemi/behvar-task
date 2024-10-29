@@ -29,6 +29,18 @@
       "name": "Finance ",
       "status": "inactive",
       "establishedDate": "2024-10-11"
+    },
+    {
+      "id": "3000",
+      "name": "Legal",
+      "status": "active",
+      "establishedDate": "2024-10-27"
+    },
+    {
+      "id": "4000",
+      "name": "new dept",
+      "status": "inactive",
+      "establishedDate": "2024-10-02"
     }
   ]
 }
