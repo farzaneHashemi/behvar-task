@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let entity of entities" (click)="toggleEntity(entity.id)">
+    <tr *ngFor="let entity of entities" (click)="toggleEntity(entity)">
       <td>{{ entity.id }}</td>
       <td *ngIf="isDepartmentList">{{ entity.name }}</td>
       <td *ngIf="!isDepartmentList">{{ entity.name }}</td>

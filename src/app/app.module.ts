@@ -7,13 +7,21 @@ import { AppComponent } from './app.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
 import { EntityListComponent } from './components/entity-list/entity-list.component';
 import { UsersComponent } from './pages/users/users.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { UserDetailDialogComponent } from './user-detail-dialog/user-detail-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
+    // MatDialogModule,
+    // MatButtonModule, // they get conflict with the user.component.ts 
     AppComponent,
     DepartmentsComponent,
     EntityListComponent,
-    UsersComponent
+    UsersComponent,
+    UserDetailDialogComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -24,6 +32,7 @@ import { UsersComponent } from './pages/users/users.component';
     provideClientHydration(),
     provideHttpClient(),
     provideHttpClient(withFetch()),
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

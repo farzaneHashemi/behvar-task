@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UserDetailDialogComponent } from '../../user-detail-dialog/user-detail-dialog.component';
 
 @Component({
   selector: 'app-entity-list',
@@ -9,33 +11,39 @@ import { UserService } from '../../services/user.service';
 })
 export class EntityListComponent {
   @Input() entities: any[] = []; 
-  @Input() isDepartmentList = false;
+  @Input() isDepartmentList: boolean = false;
   @Input() departmentUsers: User[] = [];
   @Output() departmentClicked = new EventEmitter<number>();
   @Output() entitySelected = new EventEmitter<number>();
 
   selectedEntityId: number | null = null;
-  filteredUsers: User[] = [];
   dropdownOpen = false; 
 
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
-
-  ngOnChanges(changes: SimpleChanges) {
-    // if (changes['users']) {
-    //   // Update departmentUsers if selectedEntityId is already set
-    //   if (this.selectedEntityId !== null) {
-    //     this.departmentUsers = this.getDepartmentUsers(this.selectedEntityId);
-    //   }
-    // }
+  openUserDetailDialog(user: User): void {
+    this.dialog.open(UserDetailDialogComponent, {
+      width: '400px',
+      height: 'auto',
+      data: user,
+      position: { top: '50%', left: '50%' },
+      panelClass: 'centered-dialog'
+    });
   }
 
-  toggleEntity(entityId: number): void {
-    this.selectedEntityId = this.selectedEntityId === entityId ? null : entityId;
-    if (this.isDepartmentList && this.selectedEntityId) {
-      this.entitySelected.emit(entityId);
+  toggleEntity(entity: any): void {
+    if (this.isDepartmentList) {
+      this.selectedEntityId = this.selectedEntityId === entity.id ? null : entity.id;
+      if (this.isDepartmentList && this.selectedEntityId) {
+        this.entitySelected.emit(entity.id);
+      }
+    } 
+    else {
+      this.openUserDetailDialog(entity);
     }
+    
 }
 
   onUserClick(user: User): void {
