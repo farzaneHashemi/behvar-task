@@ -3,39 +3,39 @@
     {
       "id": "101",
       "name": "Farzaneh Hashemi",
-      "organizationUnit": "Tech",
+      "departmentId": "1",
       "gender": "female",
       "phoneNumber": "9123456789",
-      "education": "master"
+      "educationLevel": "master"
     },
     {
       "id": "102",
       "name": "ali alavi",
-      "organizationUnit": "HR",
+      "departmentId": "1",
       "gender": "male",
       "phoneNumber": "9123456789",
-      "education": "bachelor"
+      "educationLevel": "bachelor"
     },
     {
       "id": "1000",
       "name": "far",
-      "organizationUnit": "8",
+      "departmentId": "2",
       "gender": "male",
       "phoneNumber": "912",
-      "education": "bachelor"
+      "educationLevel": "bachelor"
     },
     {
       "id": "1000",
       "name": "hasan ",
-      "organizationUnit": "hr",
+      "departmentId": "2",
       "gender": "male",
       "phoneNumber": "111",
-      "education": "phd"
+      "educationLevel": "phd"
     },
     {
       "id": "3",
       "name": "sasa",
-      "organizationUnit": "hr",
+      "departmentId": "2",
       "gender": "male",
       "phoneNumber": "912",
       "educationLevel": "phd"
@@ -43,7 +43,7 @@
     {
       "id": "000",
       "name": "farfar",
-      "organizationUnit": "999",
+      "departmentId": "3",
       "gender": "Female",
       "phoneNumber": "9123456789",
       "educationLevel": "bachelor"
@@ -51,48 +51,118 @@
     {
       "id": "9090",
       "name": "ft",
-      "departmentId": "8989",
+      "departmentId": "4",
       "gender": "Male",
       "phoneNumber": "666",
       "educationLevel": "phd"
+    },
+    {
+      "id": "12",
+      "name": "Farzaneh Hashemi new",
+      "departmentId": "2",
+      "gender": "Female",
+      "phoneNumber": "9123456789",
+      "educationLevel": "diploma"
+    },
+    {
+      "id": "4",
+      "name": "f",
+      "departmentId": "4",
+      "gender": "Male",
+      "phoneNumber": "999999",
+      "educationLevel": "bachelor"
+    },
+    {
+      "id": "444",
+      "name": "sara",
+      "departmentId": "7",
+      "gender": "Female",
+      "phoneNumber": "9123456789",
+      "educationLevel": "master"
+    },
+    {
+      "id": "111",
+      "name": "aaa",
+      "departmentId": "3",
+      "gender": "Female",
+      "phoneNumber": "9123456789",
+      "educationLevel": "bachelor"
+    },
+    {
+      "id": "66",
+      "name": "soqraUser",
+      "departmentId": "34",
+      "gender": "Female",
+      "phoneNumber": "912",
+      "educationLevel": "master"
     }
   ],
   "departments": [
     {
-      "id": "1000",
+      "id": "1",
       "name": "HR",
       "status": "active",
       "establishedDate": "2024-10-29"
     },
     {
-      "id": "2000",
+      "id": "2",
       "name": "Finance ",
       "status": "inactive",
       "establishedDate": "2024-10-11"
     },
     {
-      "id": "3000",
+      "id": "3",
       "name": "Legal",
       "status": "active",
       "establishedDate": "2024-10-27"
     },
     {
-      "id": "4000",
+      "id": "4",
       "name": "new dept",
       "status": "inactive",
       "establishedDate": "2024-10-02"
     },
     {
-      "id": "1",
-      "name": "a",
+      "id": "5",
+      "name": "Tech",
       "status": "inactive",
       "establishedDate": "2024-10-15"
     },
     {
-      "id": "1111",
-      "name": "aaaa",
+      "id": "6",
+      "name": "IT",
       "status": "inactive",
       "establishedDate": "2024-10-28"
+    },
+    {
+      "id": "7",
+      "name": "infra",
+      "status": "active",
+      "establishedDate": "2024-10-08"
+    },
+    {
+      "id": "8",
+      "name": "new8",
+      "status": "inactive",
+      "establishedDate": "2024-10-22"
+    },
+    {
+      "id": "9",
+      "name": "new9",
+      "status": "active",
+      "establishedDate": "2024-10-15"
+    },
+    {
+      "id": "10",
+      "name": "new10",
+      "status": "active",
+      "establishedDate": "2024-10-16"
+    },
+    {
+      "id": "34",
+      "name": "soqra",
+      "status": "active",
+      "establishedDate": "2024-10-08"
     }
   ]
 }

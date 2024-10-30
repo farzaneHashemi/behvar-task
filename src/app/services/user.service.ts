@@ -19,4 +19,9 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.apiUrl, user);
   }
+
+  getUsersByDepartment(departmentId: number): Observable<User[]> {
+    console.log("in userService, input is: ", departmentId)
+    return this.http.get<User[]>(`${this.apiUrl}?departmentId=${departmentId}`);
+  }
 }

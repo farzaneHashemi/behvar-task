@@ -38,4 +38,8 @@
   <button type="submit" [disabled]="!departmentForm.valid">Add Department</button>
 </form>
 
-<app-entity-list [entities]="departments" [columns]="departmentColumns"></app-entity-list>
+<app-entity-list
+    [entities]="departments" 
+    [isDepartmentList]="true"
+    [departmentUsers]="departmentUsers"
+    (entitySelected)="fetchDepartmentUsers($event)"></app-entity-list>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Department } from '../../models/department.model';
 import { DepartmentService } from '../../services/department.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-departments',
@@ -11,15 +13,13 @@ import { DepartmentService } from '../../services/department.service';
 export class DepartmentsComponent implements OnInit {
   departmentForm: FormGroup;
   departments: Department[] = [];
-  departmentColumns = [
-    { key: 'id', label: 'ID' },
-    { key: 'name', label: 'Department Name' },
-    { key: 'status', label: 'Department Status' },
-    { key: 'establishedDate', label: 'Established Date' },
-  ];
+  departmentUsers: User[] = [];
 
 
-  constructor(private fb: FormBuilder, private departmentService: DepartmentService) {
+  constructor(
+    private fb: FormBuilder, 
+    private departmentService: DepartmentService,
+    private userService: UserService) {
     this.departmentForm = this.fb.group({
       id: ['', Validators.required],
       // id: ['', Validators.required, Validators.pattern(/^\d+$/)],
@@ -30,10 +30,20 @@ export class DepartmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.departmentService.getDepartments().subscribe((data: Department[]) => {
-      this.departments = data;
-      console.log('deps list fetched')
+    this.fetchDepartments();
+  }
+
+  fetchDepartments(): void {
+    this.departmentService.getDepartments().subscribe((data) => (this.departments = data));
+    console.log('deps list fetched', this.departments)
+  }
+
+  fetchDepartmentUsers(departmentId: any): void {
+    console.log("fetchDepartmentUsers input ", departmentId)
+    this.userService.getUsersByDepartment(departmentId).subscribe((users: User[]) => {
+      this.departmentUsers = users;
     });
+    console.log("fetchDepartmentUsers", this.departmentUsers)
   }
 
   addDepartment(department: Department): void {

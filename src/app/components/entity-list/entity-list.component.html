@@ -1,13 +1,57 @@
 <table>
-    <thead>
-      <tr>
-        <th *ngFor="let col of columns">{{col.label}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let entity of entities" (click)="onRowClick(entity)">
-        <td *ngFor="let col of columns">{{ entity[col.key] }}</td>
-      </tr>
-    </tbody>
-  </table>
-  
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th *ngIf="isDepartmentList">Department Name</th>
+      <th *ngIf="!isDepartmentList">User Name</th>
+      <th>Status</th>
+      <th *ngIf="isDepartmentList">Established Date</th>
+      <th *ngIf="!isDepartmentList">Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entity of entities" (click)="toggleEntity(entity.id)">
+      <td>{{ entity.id }}</td>
+      <td *ngIf="isDepartmentList">{{ entity.name }}</td>
+      <td *ngIf="!isDepartmentList">{{ entity.name }}</td>
+      <td>{{ entity.status }}</td>
+      <td *ngIf="isDepartmentList">{{ entity.establishedDate | date }}</td>
+      <td *ngIf="!isDepartmentList">{{ entity.gender }}</td>
+
+      <td *ngIf="selectedEntityId === entity.id">
+        <div *ngIf="departmentUsers && departmentUsers.length > 0" class="dropdown">
+          <button (click)="toggleDropdown($event)" class="dropdown-toggle">
+            View Users in Department
+          </button>
+          <div *ngIf="dropdownOpen" class="dropdown-content">
+            <ul>
+              <li *ngFor="let user of departmentUsers" (click)="onUserClick(user)">
+                {{ user.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="!departmentUsers || departmentUsers.length === 0">
+          <p>No users found for this department.</p>
+        </div>
+      </td>       
+    </tr>
+
+    <!-- Expandable section for users in a department -->
+    <!-- <tr *ngIf="selectedEntityId === entity.id && departmentUsers && departmentUsers.length > 0">
+      <td colspan="6">
+        <div>
+          <h4>Users:</h4>
+          <ul>
+            <li *ngFor="let user of departmentUsers">{{ user.name }}</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr *ngIf="selectedEntityId === entity.id && (!departmentUsers || departmentUsers.length === 0)">
+      <td colspan="6">
+        <p>No users found for this department.</p>
+      </td>
+    </tr> -->
+  </tbody>
+</table>
