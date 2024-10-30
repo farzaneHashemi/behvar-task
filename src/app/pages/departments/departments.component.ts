@@ -22,6 +22,7 @@ export class DepartmentsComponent implements OnInit {
   constructor(private fb: FormBuilder, private departmentService: DepartmentService) {
     this.departmentForm = this.fb.group({
       id: ['', Validators.required],
+      // id: ['', Validators.required, Validators.pattern(/^\d+$/)],
       name: ['', Validators.required],
       status: ['', Validators.required],
       establishedDate: ['', Validators.required],
@@ -48,6 +49,11 @@ export class DepartmentsComponent implements OnInit {
     const control = this.departmentForm.get(controlName);
     if (control?.hasError('required')) {
       return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required. Please fill it out!`;
+    }
+    if (control?.hasError('pattern')) {
+      if (controlName === 'id') {
+        return 'ID must contain only digits.';
+      }
     }
     return '';
   }

@@ -9,7 +9,7 @@
   </div>
 
   <div>
-    <label for="name">Name:</label>
+    <label for="name">Department Name:</label>
     <input id="name" formControlName="name">
     <div *ngIf="departmentForm.get('name')?.invalid && (departmentForm.get('name')?.touched || departmentForm.get('name')?.dirty)">
       <span>{{ getValidationMessage('name') }}</span>
@@ -17,7 +17,7 @@
   </div>
 
   <div>
-    <label for="status">Status:</label>
+    <label for="status">Department Status:</label>
     <input type="radio" id="active" formControlName="status" value="active">
     <label for="active">Active</label>
     <input type="radio" id="inactive" formControlName="status" value="inactive">

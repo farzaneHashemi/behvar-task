@@ -20,14 +20,30 @@ export class UsersComponent implements OnInit {
     { key: 'educationLevel', label: 'Education Level'}
   ];
 
+  // constructor(private fb: FormBuilder, private userService: UserService) {
+  //   this.userForm = this.fb.group({
+  //     id: ['', Validators.required, Validators.pattern(/^\d+$/)],
+  //     name: ['', Validators.required],
+  //     departmentId: ['', Validators.required],
+  //     gender: ['', Validators.required],
+  //     phoneNumber: ['', Validators.pattern(/^\d{11}$/)],
+  //     educationLevel: ['', Validators.required],
+  //   });
+  // }
+
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.userForm = this.fb.group({
-      id: ['', Validators.required],
+      // id: ['', [Validators.required, Validators.pattern(/^\d+$/)]], // Only digits
+      id: ['', [Validators.required]],
       name: ['', Validators.required],
-      departmentId: ['', Validators.required],
+      organizationUnit: ['', Validators.required],
       gender: ['', Validators.required],
       phoneNumber: [''],
-      educationLevel: ['', Validators.required],
+      // phoneNumber: [
+      //   '',
+      //   [Validators.required, Validators.pattern(/^\d{11}$/)], // 11-digit mobile number
+      // ],
+      education: ['', Validators.required],
     });
   }
 
@@ -44,10 +60,33 @@ export class UsersComponent implements OnInit {
       this.users = data;
     });  }
 
+  // getValidationMessage(controlName: string): string {
+  //   const control = this.userForm.get(controlName);
+  //   if (control?.hasError('required')) {
+  //     return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required. Please fill it out!`;
+  //   }
+  //   if (control?.hasError('pattern')) {
+  //     if (controlName === 'phoneNumber') {
+  //       return 'Phone number must be 11 digits.';
+  //     }
+  //     if (controlName === 'id') {
+  //       return 'ID must contain only digits.';
+  //     }
+  //   }
+  //   return '';
+  // }
   getValidationMessage(controlName: string): string {
     const control = this.userForm.get(controlName);
     if (control?.hasError('required')) {
-      return `${controlName.charAt(0).toUpperCase() + controlName.slice(1)} is required. Please fill it out!`;
+      return `${controlName} is required.`;
+    }
+    if (control?.hasError('pattern')) {
+      if (controlName === 'phoneNumber') {
+        return 'Phone number must be 11 digits.';
+      }
+      if (controlName === 'id') {
+        return 'ID must contain only digits.';
+      }
     }
     return '';
   }

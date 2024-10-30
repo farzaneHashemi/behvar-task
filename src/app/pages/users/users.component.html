@@ -38,6 +38,9 @@
   <div>
     <label for="phoneNumber">Phone Number:</label>
     <input id="phoneNumber" formControlName="phoneNumber">
+    <div *ngIf="userForm.get('phoneNumber')?.invalid && (userForm.get('phoneNumber')?.touched || userForm.get('phoneNumber')?.dirty)">
+      <span>{{ getValidationMessage('phoneNumber') }}</span>
+    </div>
   </div>
 
   <div>
