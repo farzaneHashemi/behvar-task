@@ -24,8 +24,7 @@ export class DepartmentsComponent implements OnInit {
     private departmentService: DepartmentService,
     private userService: UserService) {
     this.departmentForm = this.fb.group({
-      id: ['', Validators.required],
-      // id: ['', Validators.required, Validators.pattern(/^\d+$/)],
+      id: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       name: ['', Validators.required],
       status: ['', Validators.required],
       establishedDate: ['', Validators.required],

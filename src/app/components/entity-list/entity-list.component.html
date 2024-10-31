@@ -3,10 +3,10 @@
     <tr>
       <th *ngIf="isDepartmentList">ID</th>
       <th *ngIf="isDepartmentList">Department Name</th>
-      <th *ngIf="!isDepartmentList">User Name</th>
+      <th *ngIf="!isDepartmentList">Employee Name</th>
       <th *ngIf="isDepartmentList">Status</th>
       <th *ngIf="isDepartmentList">Established Date</th>
-      <th *ngIf="!isDepartmentList">Gender</th>
+      <th *ngIf="!isDepartmentList">Department</th>
       <th *ngIf="isDepartmentList && 
       departmentUsers && departmentUsers.length > 0">Users</th>
     </tr>
@@ -18,7 +18,7 @@
       <td *ngIf="!isDepartmentList">{{ entity.name }}</td>
       <td *ngIf="isDepartmentList">{{ entity.status }}</td>
       <td *ngIf="isDepartmentList">{{ entity.establishedDate | date }}</td>
-      <td *ngIf="!isDepartmentList">{{ entity.gender }}</td>
+      <td *ngIf="!isDepartmentList">{{ entity.departmentId }}</td>
 
       <td *ngIf="selectedEntityId === entity.id">
         <div *ngIf="departmentUsers && departmentUsers.length > 0" class="dropdown">

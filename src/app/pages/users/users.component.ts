@@ -18,11 +18,11 @@ export class UsersComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.userForm = this.fb.group({
-      id: ['', [Validators.required]],
+      id: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       name: ['', Validators.required],
-      departmentId: ['', Validators.required],
+      departmentId: ['', Validators.required, Validators.pattern(/^\d+$/)],
       gender: ['', Validators.required],
-      phoneNumber: [''],
+      phoneNumber: ['', [Validators.pattern(/^\d{11}$/)]],
       educationLevel: ['', Validators.required],
     });
   }
