@@ -32,7 +32,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: 0; /* Remove any automatic margins */
-    padding: 0; /* Adjust padding if needed */
+    margin: 0; 
+    padding: 0; 
 }
   
