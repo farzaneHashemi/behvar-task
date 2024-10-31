@@ -11,6 +11,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { UserDetailDialogComponent } from './user-detail-dialog/user-detail-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
     DepartmentsComponent,
     EntityListComponent,
     UsersComponent,
-    UserDetailDialogComponent
+    UserDetailDialogComponent,
+    LoadingComponent
     
   ],
   imports: [

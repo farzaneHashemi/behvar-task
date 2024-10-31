@@ -37,7 +37,7 @@
 
   <button type="submit" [disabled]="!departmentForm.valid">Add Department</button>
 </form>
-
+<app-loading *ngIf="loading"></app-loading>
 <app-entity-list
     [entities]="departments" 
     [isDepartmentList]="true"

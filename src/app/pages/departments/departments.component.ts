@@ -4,6 +4,8 @@ import { Department } from '../../models/department.model';
 import { DepartmentService } from '../../services/department.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { switchMap, finalize } from 'rxjs/operators';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-departments',
@@ -14,6 +16,7 @@ export class DepartmentsComponent implements OnInit {
   departmentForm: FormGroup;
   departments: Department[] = [];
   departmentUsers: User[] = [];
+  loading: boolean = false;
 
 
   constructor(
@@ -34,8 +37,14 @@ export class DepartmentsComponent implements OnInit {
   }
 
   fetchDepartments(): void {
-    this.departmentService.getDepartments().subscribe((data) => (this.departments = data));
-    console.log('deps list fetched', this.departments)
+    this.loading = true;
+    this.departmentService.getDepartments().pipe(
+      switchMap((data) => {
+        this.departments = data;
+        return timer(500); // delay
+      }),
+      finalize(() => this.loading = false)
+    ).subscribe();
   }
 
   fetchDepartmentUsers(departmentId: any): void {
