@@ -21,7 +21,6 @@ export class UserService {
   }
 
   getUsersByDepartment(departmentId: number): Observable<User[]> {
-    console.log("in userService, input is: ", departmentId)
     return this.http.get<User[]>(`${this.apiUrl}?departmentId=${departmentId}`);
   }
 }

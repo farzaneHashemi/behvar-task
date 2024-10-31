@@ -66,22 +66,6 @@ export class UsersComponent implements OnInit {
     return '';
   }
 
-  // getValidationMessage(controlName: string): string {
-  //   const control = this.userForm.get(controlName);
-  //   if (control?.hasError('required')) {
-  //     return `${controlName} is required.`;
-  //   }
-  //   if (control?.hasError('pattern')) {
-  //     if (controlName === 'phoneNumber') {
-  //       return 'Phone number must be 11 digits.';
-  //     }
-  //     if (controlName === 'id') {
-  //       return 'ID must contain only digits.';
-  //     }
-  //   }
-  //   return '';
-  // }
-
   onSubmit(): any {
     if (this.userForm.valid) {
       this.userService.addUser(this.userForm.value).subscribe({

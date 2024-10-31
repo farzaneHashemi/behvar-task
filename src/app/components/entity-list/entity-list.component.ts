@@ -47,7 +47,6 @@ export class EntityListComponent {
 }
 
   onUserClick(user: User): void {
-    console.log('User clicked:', user);
   }
 
   onRowClick(departmentId: number): void {

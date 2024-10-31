@@ -47,11 +47,9 @@ export class DepartmentsComponent implements OnInit {
   }
 
   fetchDepartmentUsers(departmentId: any): void {
-    console.log("fetchDepartmentUsers input ", departmentId)
     this.userService.getUsersByDepartment(departmentId).subscribe((users: User[]) => {
       this.departmentUsers = users;
     });
-    console.log("fetchDepartmentUsers", this.departmentUsers)
   }
 
   addDepartment(department: Department): void {
@@ -59,7 +57,6 @@ export class DepartmentsComponent implements OnInit {
     this.departmentForm.reset();
     this.departmentService.getDepartments().subscribe((data: Department[]) => {
       this.departments = data;
-      console.log('deps list fetched')
     });
   }
 
@@ -70,7 +67,7 @@ export class DepartmentsComponent implements OnInit {
     }
     if (control?.hasError('pattern')) {
       if (controlName === 'id') {
-        return 'ID must contain only digits.';
+        return 'only digits allowed for ID.';
       }
     }
     return '';
@@ -80,14 +77,12 @@ export class DepartmentsComponent implements OnInit {
     if (this.departmentForm.valid) {
       this.departmentService.addDepartment(this.departmentForm.value).subscribe({
         next: (response: Department) => {
-          console.log("dept added", response)
           this.departments.push(response)
         },
         error: (error: any) => {
           console.log("could not add dept, error is ", error)
         }
       })
-      console.log('submit dept', this.departmentForm.value);
       
     } else console.log('not valid form')
 
