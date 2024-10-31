@@ -1,20 +1,22 @@
 <table>
   <thead>
     <tr>
-      <th>ID</th>
+      <th *ngIf="isDepartmentList">ID</th>
       <th *ngIf="isDepartmentList">Department Name</th>
       <th *ngIf="!isDepartmentList">User Name</th>
-      <th>Status</th>
+      <th *ngIf="isDepartmentList">Status</th>
       <th *ngIf="isDepartmentList">Established Date</th>
       <th *ngIf="!isDepartmentList">Gender</th>
+      <th *ngIf="isDepartmentList && 
+      departmentUsers && departmentUsers.length > 0">Users</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let entity of entities" (click)="toggleEntity(entity)">
-      <td>{{ entity.id }}</td>
+      <td *ngIf="isDepartmentList">{{ entity.id }}</td>
       <td *ngIf="isDepartmentList">{{ entity.name }}</td>
       <td *ngIf="!isDepartmentList">{{ entity.name }}</td>
-      <td>{{ entity.status }}</td>
+      <td *ngIf="isDepartmentList">{{ entity.status }}</td>
       <td *ngIf="isDepartmentList">{{ entity.establishedDate | date }}</td>
       <td *ngIf="!isDepartmentList">{{ entity.gender }}</td>
 
@@ -32,7 +34,7 @@
           </div>
         </div>
         <div *ngIf="!departmentUsers || departmentUsers.length === 0">
-          <p>No users found for this department.</p>
+          <p>No users yet.</p>
         </div>
       </td>       
     </tr>

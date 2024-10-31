@@ -28,7 +28,7 @@ export class EntityListComponent {
       width: '400px',
       height: 'auto',
       data: user,
-      position: { top: '50%', left: '50%' },
+      // position: { top: '50%', left: '50%' },
       panelClass: 'centered-dialog'
     });
   }

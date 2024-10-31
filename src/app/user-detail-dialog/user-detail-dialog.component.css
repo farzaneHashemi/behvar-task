@@ -54,3 +54,25 @@ button:hover {
 #user-card-holder {
     padding: 5% 10% 5% 10%;
 }
+
+#dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.close-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.close-button:hover {
+    background-color: #0056b3;
+}
+

@@ -163,6 +163,12 @@
       "name": "soqra",
       "status": "active",
       "establishedDate": "2024-10-08"
+    },
+    {
+      "id": "1372",
+      "name": "AI",
+      "status": "active",
+      "establishedDate": "2024-10-25"
     }
   ]
 }

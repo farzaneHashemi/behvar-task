@@ -1,23 +1,208 @@
-/* src/app/components/departments/departments.component.css */
-h2 {
-    font-size: 24px;
+/* General styling for the component */
+h1 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-top: 1rem;
+}
+
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+form div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  min-width: 150px; /* Adjust width as necessary */
+  margin-right: 0.5rem;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: calc(100% - 20px);
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #bdc3c7;
+  outline: none;
+  transition: border 0.2s ease-in;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+/* Style radio buttons inline */
+.radio-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.radio-group label {
+  font-weight: bold !important;
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: normal;
+  /* margin-left: 0.5rem; */
+  margin-right: 1rem;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1.5rem;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+button[type="submit"]:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+span {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+/* Additional styling for loading and list */
+app-loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+app-entity-list {
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
   }
-  
+
   form {
-    margin-bottom: 20px;
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  label {
+    font-size: 0.875rem;
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    font-size: 0.875rem;
+    padding: 0.4rem;
+  }
+
+  button[type="submit"] {
+    padding: 0.6rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 1rem;
+  }
+
+  .radio-group {
+    display: block;
+  }
+
+  .radio-group label {
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
   }
   
-  table {
-    width: 100%;
-    border-collapse: collapse;
+  button[type="submit"] {
+    padding: 0.5rem;
   }
-  
-  table, th, td {
-    border: 1px solid black;
+}
+
+.form-fields {
+  display: inline-flex;
+  align-items: center;
+}
+
+.form-fields label {
+  font-weight: bold !important;
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: normal;
+  /* margin-left: 0.5rem; */
+  margin-right: 1rem;
+}
+
+div input[type="radio"] {
+  margin-right: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  form div {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  th, td {
-    padding: 8px;
-    text-align: left;
+
+  label {
+    min-width: unset;
+    margin-bottom: 0.5rem;
   }
-  
+
+  h1 {
+    font-size: 1.75em;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  button[type="submit"] {
+    padding: 0.5rem;
+  }
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  min-width: 150px; /* Adjust width as necessary */
+  margin-right: 0.5rem;
+}
+
+span {
+  font-size: 0.85rem;
+  color: red;
+  margin-top: 0.25rem; /* Adds space between the input and error message */
+}
+

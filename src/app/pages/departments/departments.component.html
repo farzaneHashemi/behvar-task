@@ -1,14 +1,6 @@
 <h1>Departments</h1>
 <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="id">ID:</label>
-    <input id="id" formControlName="id">
-    <div *ngIf="departmentForm.get('id')?.invalid && (departmentForm.get('id')?.touched || departmentForm.get('id')?.dirty)">
-      <span>{{ getValidationMessage('id') }}</span>
-    </div>
-  </div>
-
-  <div>
+  <div class="form-fields">
     <label for="name">Department Name:</label>
     <input id="name" formControlName="name">
     <div *ngIf="departmentForm.get('name')?.invalid && (departmentForm.get('name')?.touched || departmentForm.get('name')?.dirty)">
@@ -16,16 +8,25 @@
     </div>
   </div>
 
-  <div>
-    <label for="status">Department Status:</label>
-    <input type="radio" id="active" formControlName="status" value="active">
-    <label for="active">Active</label>
-    <input type="radio" id="inactive" formControlName="status" value="inactive">
-    <label for="inactive">Inactive</label>
-    <div *ngIf="departmentForm.get('status')?.invalid && (departmentForm.get('status')?.touched || departmentForm.get('status')?.dirty)">
-      <span>{{ getValidationMessage('status') }}</span>
+  <div class="form-fields">
+    <label for="id">Department ID:</label>
+    <input id="id" formControlName="id">
+    <div *ngIf="departmentForm.get('id')?.invalid && (departmentForm.get('id')?.touched || departmentForm.get('id')?.dirty)">
+      <span>{{ getValidationMessage('id') }}</span>
     </div>
   </div>
+
+  <div class="radio-group">
+      <label for="status">Department Status:</label>
+      <input type="radio" id="active" formControlName="status" value="active">
+      <label for="active">Active</label>
+      <input type="radio" id="inactive" formControlName="status" value="inactive">
+      <label for="inactive">Inactive</label>
+      <div *ngIf="departmentForm.get('status')?.invalid && (departmentForm.get('status')?.touched || departmentForm.get('status')?.dirty)">
+        <span>{{ getValidationMessage('status') }}</span>
+      </div>
+   </div>  
+  
 
   <div>
     <label for="establishedDate">Established Date:</label>
